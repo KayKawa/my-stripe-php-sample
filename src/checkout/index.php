@@ -13,14 +13,13 @@ $publicKey = getenv('STRIPE_PUBLIC_KEY');
 // 2. 支払いフォームを構築するリクエストをStripe APIに送信する
 $session = \Stripe\Checkout\Session::create([
     'payment_method_types' => ['card'],
-    'line_items'           => [[
-        'name'        => 'T-shirt',                           // 商品名
-        'description' => 'Comfortable cotton t-shirt',        // 説明
-        'images'      => ['https://example.com/t-shirt.png'], // 画像URL
-        'amount'      => 500,                                 // 金額
-        'currency'    => 'jpy',                               // 単位
-        'quantity'    => 1,                                   // 数量
-    ]],
+    'line_items' => [
+        [
+            'price' =>'price_1LoiuTCnH8HQSmYyWJ5Jpmho',
+            'quantity' => 200,
+        ],
+        ],
+        'mode' => 'payment',
     'success_url'          => 'https://example.com/checkout/success.php', // 成功時リダイレクトURL
     'cancel_url'           => 'https://example.com/checkout/cancel.php',  // 失敗時リダイレクトURL
 ]);
